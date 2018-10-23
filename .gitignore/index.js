@@ -11,8 +11,7 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.author.type === "dm") return;
-
-  let prefix = botconfig.prefix;
+  
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
