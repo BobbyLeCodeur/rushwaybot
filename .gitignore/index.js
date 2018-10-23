@@ -5,7 +5,7 @@ const bot = new Discord.Client({discordEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} est connecté !`);
-  bot.user.setActivity('RushWay me développer', { type: 'WATCHING' });
+  bot.user.setStatus('invisible')
 });
 
 bot.on("message", async message => {
@@ -18,26 +18,6 @@ bot.on("message", async message => {
 
   let xpAdd = Math.floor(Math.random() * 7) + 8;
   console.log(xpAdd);
-
-  if(!xp[message.author.id]){
-      xp[message.author.id] = {
-          xp: 0,
-          level: 1
-      };
-  }
-
-  xp[message.author.id].xp = xp[message.author.id] + xpAdd;
-  let curxp = xp[message.author.id].xp;
-  let curlvl = xp[message.author.id].level;
-  let nxtLvl = xp[message.author.id].level * 300;
-  if(nxtLvl <= xp[message.author.id].xp){
-      xp[message.author.id].level = curlvl + 1;
-      console.log(`Le niveau est ${xp[message.author.id].level}`);
-      fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
-          if(err) console.log(err)
-      });
-      
-  }
 
 
   if(cmd === `${prefix}ban`){
