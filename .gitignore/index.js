@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 var bot = new Discord.Client();
 
 bot.on("ready", function(){
-    bot.user.setGame("RushWayBot | !help");
+    bot.user.setGame("RushWayBot | !uelp");
     console.log("Le RushWayBot a bien ete connecte");
 });
 
