@@ -131,4 +131,4 @@ bot.on("message", async message => {
 
 });
 
-bot.login(NTAzODg3MjE2NjM2ODU0Mjgz.DrCtfQ.Jzz0Dbf-u8ShQ_sW9nm6u19APl8);
+bot.login("NTAzODg3MjE2NjM2ODU0Mjgz.DrCtfQ.Jzz0Dbf-u8ShQ_sW9nm6u19APl8");
