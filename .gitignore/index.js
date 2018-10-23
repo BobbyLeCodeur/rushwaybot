@@ -1,4 +1,4 @@
-const botconfig = require("./botconfig.json");
+var prefix = "!"
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({discordEveryone: true});
