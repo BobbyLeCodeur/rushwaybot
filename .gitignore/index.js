@@ -11,13 +11,31 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.author.type === "dm") return;
-  
+
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
   let xpAdd = Math.floor(Math.random() * 7) + 8;
   console.log(xpAdd);
+
+  if(!xp[message.author.id]){
+      xp[message.author.id] = {
+          xp: 0,
+          level: 1
+      };
+  }
+
+  xp[message.author.id].xp = xp[message.author.id] + xpAdd;
+
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtLvl = xp[message.author.id].level * 300;
+  if(nxtLvl <= xp[message.author.id].xp){
+      xp[message.author.id].level = curlvl + 1;
+      console.log(`Le niveau est ${xp[message.author.id].level}`);
+      
+  }
 
 
   if(cmd === `${prefix}ban`){
