@@ -5,6 +5,7 @@ const bot = new Discord.Client({discordEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} est connecté !`);
+  bot.user.setActivity('RushWay me développer', { type: 'WATCHING' });
 });
 
 bot.on("message", async message => {
@@ -14,10 +15,6 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-
-  let xpAdd = Math.floor(Math.random() * 7) + 8;
-  console.log(xpAdd);
-
 
   if(cmd === `${prefix}ban`){
 
@@ -111,10 +108,6 @@ bot.on("message", async message => {
     .addField(":triangular_flag_on_post: • Vous avez rejoint", message.member.joinedAt)
     .addField(":busts_in_silhouette: • Nombre de membres", message.guild.memberCount);
 
-
-
-
-
     return message.channel.send(serverembed);
   }
 
@@ -133,4 +126,4 @@ bot.on("message", async message => {
 
 });
 
-bot.login(process.env.BOT_TOKEN);
+bot.login("NTAzODg3MjE2NjM2ODU0Mjgz.DrCtfQ.Jzz0Dbf-u8ShQ_sW9nm6u19APl8");
