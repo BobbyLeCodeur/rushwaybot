@@ -19,10 +19,7 @@ bot.on("message", async message => {
     
     if (message.member.id != '396722578812829700') return message.channel.send(":x: • Vous n´avez pas la permission d´exécuter cette commande !");
    
-    else{
-      if(message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":white_check_mark: • Vous avez la permission");
-  
-  }
+    else return message.channel.send(":white_check_mark: • Vous avez la permission");
     
   }
 
