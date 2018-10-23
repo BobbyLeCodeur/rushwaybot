@@ -5,6 +5,7 @@ const bot = new Discord.Client({discordEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} est connecté !`);
+  bot.user.setActivity('RushWay me développer', { type: 'WATCHING' });
 });
 
 bot.on("message", async message => {
@@ -14,6 +15,15 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+
+  if (message.content.startsWith(prefix + "setgame")) {
+    if (message.member.id != '396722578812829700') {
+        return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
+    } else {
+        let game = args.slice(1).join(' ');
+        if(!game) game = "RushWay - Alpha"
+            message.channel.sendMessage(`Description mis à jour : ${game}`)
+            bot.user.setActivity(game)
 
   if(cmd === `${prefix}ban`){
 
