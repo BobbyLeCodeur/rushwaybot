@@ -27,7 +27,6 @@ bot.on("message", async message => {
   }
 
   xp[message.author.id].xp = xp[message.author.id] + xpAdd;
-
   let curxp = xp[message.author.id].xp;
   let curlvl = xp[message.author.id].level;
   let nxtLvl = xp[message.author.id].level * 300;
