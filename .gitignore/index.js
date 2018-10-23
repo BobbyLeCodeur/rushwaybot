@@ -21,8 +21,8 @@ bot.on("message", async message => {
         return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
     } else {
         let game = args.slice(1).join(' ');
-        message.channel.sendMessage(`Description mis à jour : ${game}`)
-        bot.user.setActivity(game)
+        message.channel.sendMessage(`Description mis à jour : ${game}`);
+        bot.user.setActivity(game);
 
   if(cmd === `${prefix}ban`){
 
