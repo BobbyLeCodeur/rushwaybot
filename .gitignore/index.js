@@ -17,11 +17,7 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}jeu`){
     
-    if(message.member.hasPermission("MANAGE_MESSAGES"){
-       
-       message.channel.send(":white_check_mark: • Vous avez la permission de modifier les paramètres du bot");
-       
-       }
+    if(message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande !");
   
   }
 
