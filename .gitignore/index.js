@@ -20,6 +20,8 @@ bot.on("message", async message => {
     if (message.member.id != '396722578812829700') return message.channel.send(":x: • Vous n´avez pas la permission d´exécuter cette commande !");
    
     else return message.channel.send(":white_check_mark: • Vous avez la permission");
+    let game = args.slice(1).join(' ');
+    bot.user.setGame(game);
     
   }
 
