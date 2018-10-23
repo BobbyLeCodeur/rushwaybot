@@ -14,6 +14,16 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+  
+  if(cmd === `${prefix}jeu`){
+    
+    if(message.member.hasPermission("MANAGE_MESSAGES"){
+       
+       message.channel.send(":white_check_mark: • Vous avez la permission de modifier les paramètres du bot");
+       
+       }
+  
+  }
 
   if(cmd === `${prefix}ban`){
 
