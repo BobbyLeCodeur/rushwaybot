@@ -5,7 +5,7 @@ const bot = new Discord.Client({discordEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} est connecté !`);
-  bot.user.setStatus('invisible')
+  bot.user.setGame("être soumis à RushWay")
 });
 
 bot.on("message", async message => {
