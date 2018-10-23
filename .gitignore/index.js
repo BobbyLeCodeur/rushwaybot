@@ -16,14 +16,13 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if (cmd == `${prefix}ban`) {
+  if (cmd == `${prefix}jeu`) {
     if (message.member.id != '396722578812829700') {
         return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
     } else {
         let game = args.slice(1).join(' ');
-        if(!game) game = "RushWay - Alpha"
-            message.channel.sendMessage(`Description mis à jour : ${game}`)
-            bot.user.setActivity(game)
+        message.channel.sendMessage(`Description mis à jour : ${game}`)
+        bot.user.setActivity(game)
 
   if(cmd === `${prefix}ban`){
 
