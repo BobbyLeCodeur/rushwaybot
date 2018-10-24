@@ -16,7 +16,12 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   if(cmd === `${prefix}dm`){
-    message.author.send("T'es noir fils de pute");
+
+    let helpEmbed = new Discord.RichEmbed()
+    .setDescription(":grey_question: • Aide - RushWayBot")
+    .setColor("#ff0000")
+    .addField("")
+    message.author.send(helpEmbed);
     message.delete().catch(O_o=>{});
   }
 
