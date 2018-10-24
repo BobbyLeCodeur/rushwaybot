@@ -20,7 +20,7 @@ bot.on("message", async message => {
     let helpEmbed = new Discord.RichEmbed()
     .setDescription(":grey_question: • Aide - RushWayBot")
     .setColor("#ff0000")
-    .addField("")
+    .addField("cc")
     message.author.send(helpEmbed);
     message.delete().catch(O_o=>{});
   }
