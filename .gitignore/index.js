@@ -19,14 +19,27 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}purge`){
 
-    if(isNaN(args[0])) return message.channel.send(":x: • Veuillez indiquer un nombre de messages à supprimer !");
+    async function purge(){
+      message.delete();
+    }
 
-    if(args[0] > 100) return message.channel.send(":x: • Veuillez entrer un nombre inférieur à 100");
+    if(!message.author.roles.find("name", "trop un thug")){
+      message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande");
+      return;
+    }
 
-    message.channel.bulkDelete(args[0])
-      .then( messages => message.channel.send(`:wastebasket: • \`${messages.size}/${args[0]}\` ont étés supprimés !`).then( msg => msg.delete({ timeout: 10000})))
+    if(isNaN(args[0])){
 
-    .catch( error => message.channel.send(`:x: • Erreur ${error.message}`));
+      message.channel.send(":x: • Veuillez indiquer un nombre de messages à supprimer");
+      return;
+
+    }
+
+    const fetched = await message.channel.fetchMessages({limit: args[0]});
+    console.log(":wastebasket: • " + fetched.size + " messages ont étés supprimés !");
+
+    message.channel.bulkDelete(fetched)
+      .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus.");
 
   }
 
