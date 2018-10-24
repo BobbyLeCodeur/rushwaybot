@@ -18,25 +18,17 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}play`){
+  if(cmd === `${prefix}purge`){
 
-    if(!message.member.voiceChannel) return message.channel.send(":x: • Tu dois être dans un salon vocal pour écouter de la musique !");
+    if(isNaN(args[0])) return message.channel.send(":x: • Veuillez indiquer un nombre de messages à supprimer !");
 
-    if(message.guild.me.voiceChannel) return message.channel.send(":x: • Désolé, le bot est déjà connecté à un salon vocal !");
+    if(args[0] > 100) return message.channel.send(":x: • Veuillez entrer un nombre inférieur à 100");
 
-    if(!args[0]) return message.channel.search(":x: • Veuillez entrer le lien d'une musique !");
+    message.channel.bulkDelete(args[0])
+      .then( messages => message.channel.send(`:wastebasket: • \`${messages.size}/${args[0]}\` ont étés supprimés !`).then( msg 
+=> msg.delete({ timeout: 10000})))
 
-    let validate = await ytdl.validateURL(args[0]);
-
-    if(!validate) return message.channel.send(":x: • Veuillez entrer un lien **valide** !");
-
-    let info = await ytdl.getInfo(args[0]);
-
-    let connection = await message.member.voiceChannel.join();
-
-    let dispatcher = await connection.playArbitraryInput(ytdl(args[0], { filter: 'audioonly' }));
-
-    message.channel.send(`:notes: • Je chante à présent ${info.title}`);
+    .catch( error => message.channel.send(`:x: • Erreur ${error.message}`));
 
   }
 
