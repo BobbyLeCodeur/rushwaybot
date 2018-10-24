@@ -26,8 +26,6 @@ bot.on("message", async message => {
     
   }
   }
-  }
-
   if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
