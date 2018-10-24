@@ -24,7 +24,7 @@ bot.on("message", async message => {
       if(message.member.voiceChannel)
       {
           message.member.voiceChannel.join().then(connection => {
-            dispatcher = connection.playArbitraryInput(splitMessage[1]);
+            dispatcher = connection.playArbitraryInput("https://www.youtube.com/watch?v=hGlFklXPFgE");
 
             dispatcher.on('error', e => {
               console.log(e);
