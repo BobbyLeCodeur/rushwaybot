@@ -1,6 +1,6 @@
 var prefix = "!"
 const Discord = require("discord.js");
-const yt = require('ytdl-core');
+const ytdl = require("ytdl-core");
 
 const bot = new Discord.Client({discordEveryone: true});
 
