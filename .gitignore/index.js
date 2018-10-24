@@ -17,12 +17,14 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}jeu`){
     
-    if (message.member.id != '396722578812829700') return message.channel.send(":x: • Vous n´avez pas la permission d´exécuter cette commande !");
-   
-    else {  
-      let game = args.slice.apply(1).join(' ');
-      message.channel.send(`Description mise à jour : ${game}`);
-      bot.user.setActivity(game)
+      if (message.content.startsWith(prefix + "setgame")) {
+            if (message.member.id != '396722578812829700') {
+                return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
+            } else {
+        let game = args.slice(1).join(' ');
+        if(!game) game = "Mushway - Alpha"
+        message.channel.sendMessage(`Description mis à jour : ${game}`)
+        client.user.setActivity(game)
     
   }
   }
