@@ -15,6 +15,25 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+  if(cmd === `${prefix}chien`){
+
+    var chien = [
+
+      "https://media.giphy.com/media/yjGdFXjeQsDqJNSzE4/giphy.gif",
+      "https://media.giphy.com/media/JfDNFU1qOZna/giphy.gif",
+      "https://media.giphy.com/media/d3Fym9OQ08o6agYE/giphy.gif"
+
+    ];
+
+    var gif = chien[Math.floor(Math.random() * chien.length)];
+
+    var dog_embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle(":dog: • Woufff")
+    .setImage(gif)
+    message.channel.send(dog_embed);
+    }
+
   if(cmd === `${prefix}dm`){
 
     let helpEmbed = new Discord.RichEmbed()
@@ -22,7 +41,7 @@ bot.on("message", async message => {
     .setColor("#ff0000")
     .addField(":trackball: • Préfixe")
     .addField("!")
-    .addBlankField()
+    .add
     .setFooter("Bot développé par RushWay.")
     message.author.send(helpEmbed);
     message.delete().catch(O_o=>{});
