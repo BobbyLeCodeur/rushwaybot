@@ -18,7 +18,7 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   if(cmd === `${prefix}play`){
-    let splitMessage = message.content.split(' ');
+    let splitMessage = message.content.split(" ");
     if(splitMessage.length === 2)
     {
       if(message.member.voiceChannel)
