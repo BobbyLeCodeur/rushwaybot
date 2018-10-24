@@ -19,9 +19,6 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}purge`){
 
-    async function purge(){
-      message.delete();
-    }
 
     if(!message.member.roles.find("name", "trop un thug")) return message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande !");
     }
