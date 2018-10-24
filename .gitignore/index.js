@@ -22,7 +22,7 @@ bot.on("message", async message => {
     .setColor("#ff0000")
     .addField(":trackball: • Préfixe")
     .addField("!")
-    .addBlankField
+    .addBlankField()
     .setFooter("Bot développé par RushWay.")
     message.author.send(helpEmbed);
     message.delete().catch(O_o=>{});
