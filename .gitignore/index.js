@@ -22,7 +22,7 @@ bot.on("message", async message => {
     else return message.channel.send(game);
       let game = args.slice.apply(1).join(' ');
       message.channel.send(game);
-      bot.user.setActivity(game);
+      bot.user.setActivity(game)
     
   }
 
