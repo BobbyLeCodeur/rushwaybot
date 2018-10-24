@@ -18,13 +18,12 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   if(cmd === `${prefix}play`){
-    let splitMessage = message.content.split(" ");
-    if(args.length === 2)
+    if(messageArray === 2)
     {
       if(message.member.voiceChannel)
       {
           message.member.voiceChannel.join().then(connection => {
-            dispatcher = connection.playArbitraryInput(args.slice.apply(1).join(' '));
+            dispatcher = connection.playArbitraryInput(messageArray[1]);
 
             dispatcher.on('error', e => {
               console.log(e);
