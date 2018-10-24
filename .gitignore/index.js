@@ -18,9 +18,12 @@ bot.on("message", async message => {
   if(cmd === `${prefix}dm`){
 
     let helpEmbed = new Discord.RichEmbed()
-    .setDescription(":grey_question: • Aide - RushWayBot")
+    .setDescription(":grey_question: • **Aide - RushWayBot**")
     .setColor("#ff0000")
-    .addField("cc")
+    .addField(":trackball: • Préfixe")
+    .addField("!")
+    .addBlankField
+    .setFooter("Bot développé par RushWay.")
     message.author.send(helpEmbed);
     message.delete().catch(O_o=>{});
   }
