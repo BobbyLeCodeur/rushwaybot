@@ -18,39 +18,25 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   if(cmd === `${prefix}play`){
-    let splitMessage = message.content.split(" ");
-    if(splitMessage.length === 2)
-    {
-      if(message.member.voiceChannel)
-      {
-          message.member.voiceChannel.join().then(connection => {
-            dispatcher = connection.playArbitraryInput("https://www.youtube.com/watch?v=hGlFklXPFgE");
 
-            dispatcher.on('error', e => {
-              console.log(e);
-          });
+    if(!message.member.voiceChannel) return message.channel.send(":x: • Tu dois être dans un salon vocal pour écouter de la musique !");
 
-          dispatcher.on('end', e => {
-            dispatcher = undefined;
-            console.log('Fin de la musique');
-        }).catch(console.log);
-      });
-      }
-      else
-        message.channel.send(":x: • Veuillez rejoindre un salon vocal !");
-    }
-    else
-      message.channel.search(":x: • Veuillez entrer le lien d'une musique !");
-  }
+    if(message.guild.me.voiceChannel) return message.channel.send(":x: • Désolé, le bot est déjà connecté à un salon vocal !");
 
-  if(cmd === `${prefix}pause`){
-    if(dispatcher !== undefined)
-      dispatcher.pause();
-  }
+    if(!args[0]) return message.channel.search(":x: • Veuillez entrer le lien d'une musique !");
 
-  if(cmd === `${prefix}resume`){
-    if(dispatcher !== undefined)
-      dispatcher.resume();
+    let validate = await ytdl.validateURL(args[0]);
+
+    if(!validate) return message.channel.send(":x: • Veuillez entrer un lien **valide** !");
+
+    let info = await ytdl.getInfo(args[0]);
+
+    let connection = await message.member.voiceChannel.join();
+
+    let dispatcher = await connection.playArbitraryInput(ytdl(args[0, { filter: 'audioonly' }]));
+
+    message.channel.send(`:notes: • Je chante à présent ${info.title}`);
+
   }
 
   if(cmd === `${prefix}chien`){
