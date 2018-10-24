@@ -39,7 +39,7 @@ bot.on("message", async message => {
     console.log(":wastebasket: • " + fetched.size + " messages ont étés supprimés !");
 
     message.channel.bulkDelete(fetched)
-      .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus.");
+      .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus."));
 
   }
 
