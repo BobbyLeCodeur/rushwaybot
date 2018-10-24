@@ -17,27 +17,6 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}purge`){
-
-
-    if(!message.member.roles.find("name", "trop un thug")) return message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande !");
-    }
-
-    if(isNaN(args[0])){
-
-      message.channel.send(":x: • Veuillez indiquer un nombre de messages à supprimer");
-      return;
-
-    }
-
-    const fetched = await message.channel.fetchMessages({limit: args[0]});
-    console.log(":wastebasket: • " + fetched.size + " messages ont étés supprimés !");
-
-    message.channel.bulkDelete(fetched)
-      .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus."));
-
-  
-
   if(cmd === `${prefix}chien`){
 
     var chien = [
