@@ -25,8 +25,7 @@ bot.on("message", async message => {
     if(args[0] > 100) return message.channel.send(":x: • Veuillez entrer un nombre inférieur à 100");
 
     message.channel.bulkDelete(args[0])
-      .then( messages => message.channel.send(`:wastebasket: • \`${messages.size}/${args[0]}\` ont étés supprimés !`).then( msg 
-=> msg.delete({ timeout: 10000})))
+      .then( messages => message.channel.send(`:wastebasket: • \`${messages.size}/${args[0]}\` ont étés supprimés !`).then( msg => msg.delete({ timeout: 10000})))
 
     .catch( error => message.channel.send(`:x: • Erreur ${error.message}`));
 
