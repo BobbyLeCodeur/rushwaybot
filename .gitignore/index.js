@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({discordEveryone: true});
 
+var dispatcher;
+
 bot.on("ready", async () => {
   console.log(`${bot.user.username} est connecté !`);
 });
@@ -14,6 +16,41 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+
+  if(cmd === `${prefix}play`){
+    if(splitMessage.length === 2)
+    {
+      if(message.member.voiceChannel)
+      {
+          message.member.voiceChannel.join().then(connection => {
+            dispatcher = connection.playArbitraryInput(splitMessage[1]);
+
+            dispatcher.on('error', e => {
+              console.log(e);
+          });
+
+          dispatcher.on('end', e => {
+            dispatcher = undefined;
+            console.log('Fin de la musique');
+        }).catch(console.log);
+      });
+      }
+      else
+        message.channel.send(":x: • Veuillez rejoindre un salon vocal !");
+    }
+    else
+      message.channel.search(":x: • Veuillez entrer le lien d'une musique !");
+  }
+
+  if(cmd === `${prefix}pause`){
+    if(dispatcher !== undefined)
+      dispatcher.pause();
+  }
+
+  if(cmd === `${prefix}resume`){
+    if(dispatcher !== undefined)
+      dispatcher.resume();
+  }
 
   if(cmd === `${prefix}chien`){
 
