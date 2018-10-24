@@ -20,9 +20,9 @@ bot.on("message", async message => {
                 return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
             } else {
         let game = args.slice(1).join(' ');
-        if(!game) game = "Mushway - Alpha"
+        if(!game) game = "RushWayBot - Alpha"
         message.channel.sendMessage(`Description mis à jour : ${game}`)
-        client.user.setActivity(game)
+        bot.user.setActivity(game)
     
   }
   }
