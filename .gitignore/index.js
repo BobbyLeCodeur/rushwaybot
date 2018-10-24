@@ -1,5 +1,6 @@
 var prefix = "!"
 const Discord = require("discord.js");
+const economy = require("discord.eco");
 
 const bot = new Discord.Client({discordEveryone: true});
 
@@ -16,6 +17,22 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+
+  if(cmd === `${prefix}money`){
+
+    economy.fetchBalance(message.author.id).then((i) => {
+
+      const moneyEmbed = new Discord.RichEmbed()
+        .setDescription(`Banque de **${message.guild.name}**`)
+        .setDescription('👤 • Propriétaire du compte', message.author.username,true)
+        .addField(':money_with_wings: • Argent',i.money,true)
+        .setColor("#ff0000")
+
+        message.channel.send(moneyEmbed);
+
+    })
+
+  }
 
   
   bot.on('messageReactionAdd', (reaction, user) => {
