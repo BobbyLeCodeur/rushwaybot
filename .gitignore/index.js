@@ -19,7 +19,7 @@ bot.on("message", async message => {
             if (message.member.id != '396722578812829700') {
                 return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
             } else {
-        let game = args.slice(1).join(' ');
+        let game = args.slice.apply(1).join(' ');
         message.channel.sendMessage(`Description mis à jour : ${game}`)
         bot.user.setActivity(game)
     
