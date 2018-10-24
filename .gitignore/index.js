@@ -21,7 +21,7 @@ bot.on("message", async message => {
    
     else {  
       let game = args.slice.apply(1).join(' ');
-      message.channel.send(game);
+      message.channel.send(`Description mise à jour : ${game}`);
       bot.user.setActivity(game)
     
   }
