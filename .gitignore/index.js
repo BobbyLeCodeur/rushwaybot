@@ -17,6 +17,16 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+  
+  bot.on('messageReactionAdd', (reaction, user) => {
+    let reactionChannel = message.guild.channels.find(`name`, "🚨╿règlement");
+    if(reaction.emoji.name === "✅")
+      if(message.channel.name === reactionChannel)
+        bot.channels.get("489451672649596949").send(reaction.emoji.name);
+
+  });
+  
+
   if(cmd === `${prefix}chien`){
 
     var chien = [
