@@ -23,9 +23,7 @@ bot.on("message", async message => {
       message.delete();
     }
 
-    if(!message.author.roles.find("name", "trop un thug")){
-      message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande");
-      return;
+    if(!message.member.roles.find("name", "trop un thug")) return message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande !");
     }
 
     if(isNaN(args[0])){
