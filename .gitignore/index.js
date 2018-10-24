@@ -16,8 +16,6 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   
   if(cmd === `${prefix}jeu`){
-    
-      if (message.content.startsWith(prefix + "setgame")) {
             if (message.member.id != '396722578812829700') {
                 return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
             } else {
