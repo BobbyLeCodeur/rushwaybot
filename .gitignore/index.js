@@ -19,10 +19,12 @@ bot.on("message", async message => {
     
     if (message.member.id != '396722578812829700') return message.channel.send(":x: • Vous n´avez pas la permission d´exécuter cette commande !");
    
+    else {  
       let game = args.slice.apply(1).join(' ');
       message.channel.send(game);
       bot.user.setActivity(game)
     
+  }
   }
 
   if(cmd === `${prefix}ban`){
