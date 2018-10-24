@@ -33,7 +33,7 @@ bot.on("message", async message => {
 
     let connection = await message.member.voiceChannel.join();
 
-    let dispatcher = await connection.playArbitraryInput(ytdl(args[0, { filter: 'audioonly' }]));
+    let dispatcher = await connection.playArbitraryInput(ytdl(args[0], { filter: 'audioonly' }));
 
     message.channel.send(`:notes: • Je chante à présent ${info.title}`);
 
