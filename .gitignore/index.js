@@ -17,6 +17,7 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}dm`){
     message.author.send("T'es noir fils de pute");
+    message.delete().catch(O_o=>{});
   }
 
   if(cmd === `${prefix}ban`){
