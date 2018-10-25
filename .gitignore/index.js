@@ -1,6 +1,5 @@
 var prefix = "!"
 const Discord = require("discord.js");
-const economy = require("discord.eco");
 
 const bot = new Discord.Client({discordEveryone: true});
 
