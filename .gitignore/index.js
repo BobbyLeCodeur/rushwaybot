@@ -17,6 +17,14 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   var args = message.content.substring(prefix.length).split(" ");
 
+  bot.on('messageReactionAdd', (reaction, user) => {
+    if(reaction.emoji.name === "✅")
+      bot.channels.get("489451672649596949").send("✅✅✅");
+
+    bot.channels.get("489451672649596949").send('Réactionnnnnnnn ' + reaction.emoji.name);
+  });
+
+
   if(cmd === `${prefix}jeu`){
     if(message.member.id != '396722578812829700') return message.channel.send(":x: • Tu n'as pas la permission d'exécuter cette commande !");
 
