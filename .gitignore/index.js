@@ -176,6 +176,6 @@ client.user.setActivity(game)
     return message.channel.send(botembed);
   }
 
-});
+};
 
 bot.login(process.env.BOT_TOKEN);
