@@ -15,25 +15,31 @@ bot.on("message", async message => {
 
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
-  var args = message.content.substring(prefix.length).split(" ");
+  let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}jeu`){
-    if (message.member.id != '396722578812829700') {
-      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
-  } else {
-  let game = args.slice(1).join(' ')   
-message.channel.sendMessage(`Description mis à jour : ${game}`)
-client.user.setActivity(game)
+  if(cmd === `${prefix}purge`){
 
-  
-  bot.on('messageReactionAdd', (reaction, user) => {
-    let reactionChannel = message.guild.channels.find(`name`, "🚨╿règlement");
-    if(reaction.emoji.name === "✅")
-      if(message.channel.name === reactionChannel)
-        bot.channels.get("489451672649596949").send(reaction.emoji.name);
+    async function purge(){
+      message.delete();
+    }
 
-  });
-  
+    if(!message.member.roles.find("name", "trop un thug")) return message.channel.send(":x: • Vous n'avez pas la permission d'exécuter cette commande !");
+    }
+
+    if(isNaN(args[0])){
+
+      message.channel.send(":x: • Veuillez indiquer un nombre de messages à supprimer");
+      return;
+
+    }
+
+    const fetched = await message.channel.fetchMessages({limit: args[0]});
+    console.log(":wastebasket: • " + fetched.size + " messages ont étés supprimés !");
+
+    message.channel.bulkDelete(fetched)
+      .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus."));
+
+  }
 
   if(cmd === `${prefix}chien`){
 
@@ -174,9 +180,7 @@ client.user.setActivity(game)
 
     return message.channel.send(botembed);
   }
-}
-  }
-
-  bot.login(process.env.BOT_TOKEN)
 
 });
+
+bot.login(process.env.BOT_TOKEN);
