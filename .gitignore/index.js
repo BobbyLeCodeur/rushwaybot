@@ -39,7 +39,7 @@ bot.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus."));
 
-  }
+  });
 
   if(cmd === `${prefix}chien`){
 
