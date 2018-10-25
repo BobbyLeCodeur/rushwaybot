@@ -39,8 +39,6 @@ bot.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.channel.send(":x: • Erreur...Err...RushWayBot ne répond plus."));
 
-  });
-
   if(cmd === `${prefix}chien`){
 
     var chien = [
@@ -59,6 +57,7 @@ bot.on("message", async message => {
     .setImage(gif)
     message.channel.send(dog_embed);
     }
+  
 
   if(cmd === `${prefix}dm`){
 
@@ -180,6 +179,6 @@ bot.on("message", async message => {
 
     return message.channel.send(botembed);
   }
-
+});
 
 bot.login(process.env.BOT_TOKEN);
