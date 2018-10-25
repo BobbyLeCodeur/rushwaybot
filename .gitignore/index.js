@@ -18,21 +18,14 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}money`){
-
-    economy.fetchBalance(message.author.id).then((i) => {
-
-      const moneyEmbed = new Discord.RichEmbed()
-        .setDescription(`Banque de **${message.guild.name}**`)
-        .setDescription('👤 • Propriétaire du compte', message.author.username,true)
-        .addField(':money_with_wings: • Argent',i.money,true)
-        .setColor("#ff0000")
-
-        message.channel.send(moneyEmbed);
-
-    })
-
-  }
+  if(cmd === `${prefix}jeu`){
+    if (message.member.id != '396722578812829700') {
+      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
+  } else {
+  var args = message.content.substring(prefix.length).split(" ");
+  let game = args.slice(1).join(' ')   
+message.channel.sendMessage(`Description mis à jour : ${game}`)
+client.user.setActivity(game)
 
   
   bot.on('messageReactionAdd', (reaction, user) => {
