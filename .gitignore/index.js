@@ -17,6 +17,16 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+  if(cmd === `${prefix}jeu`){
+    if(message.member.id != '396722578812829700') return message.channel.send(":x: • Tu n'as pas la permission d'exécuter cette commande !");
+
+    else {
+      let game = args.slice(1).join(' ')
+    message.channel.send(`${game}`)
+    bot.user.setActivity(game);
+    }
+  }
+
   if(cmd === `${prefix}chien`){
 
     var chien = [
