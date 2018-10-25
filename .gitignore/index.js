@@ -181,6 +181,5 @@ bot.on("message", async message => {
     return message.channel.send(botembed);
   }
 
-});
 
 bot.login(process.env.BOT_TOKEN);
