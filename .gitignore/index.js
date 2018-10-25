@@ -15,7 +15,7 @@ bot.on("message", async message => {
 
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
-  let args = messageArray.slice(1);
+  var args = message.content.substring(prefix.length).split(" ");
 
   if(cmd === `${prefix}jeu`){
     if(message.member.id != '396722578812829700') return message.channel.send(":x: • Tu n'as pas la permission d'exécuter cette commande !");
