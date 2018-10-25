@@ -18,24 +18,6 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   var args = message.content.substring(prefix.length).split(" ");
 
-  if(cmd === `${prefix}jeu`){
-    if (message.member.id != '396722578812829700') {
-      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:");
-  } else {
-  let game = args.slice(1).join(' ')   
-message.channel.send(`Description mis à jour : ${game}`);
-bot.user.setActivity(game)
-
-  
-  bot.on('messageReactionAdd', (reaction, user) => {
-    let reactionChannel = message.guild.channels.find(`name`, "🚨╿règlement");
-    if(reaction.emoji.name === "✅")
-      if(message.channel.name === reactionChannel)
-        bot.channels.get("489451672649596949").send(reaction.emoji.name);
-
-  });
-  
-
   if(cmd === `${prefix}chien`){
 
     var chien = [
