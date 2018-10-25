@@ -20,11 +20,11 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}jeu`){
     if (message.member.id != '396722578812829700') {
-      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
+      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:");
   } else {
   let game = args.slice(1).join(' ')   
-message.channel.sendMessage(`Description mis à jour : ${game}`)
-client.user.setActivity(game)
+message.channel.send(`Description mis à jour : ${game}`);
+bot.user.setActivity(game)
 
   
   bot.on('messageReactionAdd', (reaction, user) => {
