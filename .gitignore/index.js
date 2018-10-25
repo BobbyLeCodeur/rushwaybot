@@ -1,5 +1,6 @@
 var prefix = "!"
 const Discord = require("discord.js");
+const economy = require("discord.eco");
 
 const bot = new Discord.Client({discordEveryone: true});
 
@@ -16,6 +17,24 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   var args = message.content.substring(prefix.length).split(" ");
+
+  if(cmd === `${prefix}jeu`){
+    if (message.member.id != '396722578812829700') {
+      return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
+  } else {
+  let game = args.slice(1).join(' ')   
+message.channel.sendMessage(`Description mis à jour : ${game}`)
+client.user.setActivity(game)
+
+  
+  bot.on('messageReactionAdd', (reaction, user) => {
+    let reactionChannel = message.guild.channels.find(`name`, "🚨╿règlement");
+    if(reaction.emoji.name === "✅")
+      if(message.channel.name === reactionChannel)
+        bot.channels.get("489451672649596949").send(reaction.emoji.name);
+
+  });
+  
 
   if(cmd === `${prefix}chien`){
 
@@ -156,7 +175,9 @@ bot.on("message", async message => {
 
     return message.channel.send(botembed);
   }
+}
+  }
 
-  bot.login(process.env.BOT_TOKEN);
+  bot.login(process.env.BOT_TOKEN)
 
 });
