@@ -18,16 +18,30 @@ bot.on("message", async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
 bot.on("guildMemberAdd", member => {
+  const bvn = member.guild.channels.find(m => m.name === "bienvenue")
+  if (!bvn) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('#01B2FE')
+  .setAuthor(member.user.tag, member.user.avatarURL)
+  .addField("🚀 Bienvenue à toi", `[${member.user.tag}](https://discordapp.com)`, true )
+  .addField(`👨‍ Nous sommes actuellement`, member.guild.memberCount)
+  .setFooter(`ID : ${member.user.id}`)
+  .setTimestamp()
+  bvn.send(embed)
+})
 
-  let bvnEmbed = new Discord.RichEmbed()
-    .setDescription(":wave: • Bienvenue !")
-    .setColor("#00ff3b")
-    .addField(`:bust_in_silhouette: • Utilisateur » ${member.user.username}`)
-    .addField(`:arrow_right: • Passe du bon temps sur nos plateformes !`)
-
-  member.guild.channels.find("name", "👋🏻╿вιєηνєηυє").send(bvnEmbed);
+bot.on("guildMemberRemove", member => {
+  const bvn = member.guild.channels.find(m => m.name === "bienvenue")
+  if (!bvn) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('#FE0101')
+  .setAuthor(member.user.tag, member.user.avatarURL)
+  .addField("🚀 Au-revoir à bientôt", `[${member.user.tag}](https://discordapp.com)`, true )
+  .addField(`👨‍ Nous sommes actuellement`, member.guild.memberCount)
+  .setFooter(`ID : ${member.user.id}`)
+  .setTimestamp()
+  bvn.send(embed)
 });
-
 
   if(cmd === `${prefix}jeu`){
     if(message.member.id != '396722578812829700') return message.channel.send(":x: • Tu n'as pas la permission d'exécuter cette commande !");
