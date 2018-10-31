@@ -17,12 +17,16 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   var args = message.content.substring(prefix.length).split(" ");
 
-  bot.on('messageReactionAdd', (reaction, user) => {
-    if(reaction.emoji.name === "✅")
-      bot.channels.get("489451672649596949").send("✅✅✅");
+bot.on("guildMemberAdd", member => {
 
-    bot.channels.get("489451672649596949").send('Réactionnnnnnnn ' + reaction.emoji.name);
-  });
+  let bvnEmbed = new Discord.RichEmbed()
+    .setDescription(":wave: • Bienvenue !")
+    .setColor("#00ff3b")
+    .addField(`:bust_in_silhouette: • Utilisateur » ${member.user.username}`)
+    .addField(`:arrow_right: • Passe du bon temps sur nos plateformes !`)
+
+  member.guild.channels.find("name", "👋🏻╿вιєηνєηυє").send(bvnEmbed);
+});
 
 
   if(cmd === `${prefix}jeu`){
