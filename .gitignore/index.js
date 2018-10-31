@@ -18,7 +18,7 @@ bot.on("message", async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
 bot.on("guildMemberAdd", member => {
-  const bvn = member.guild.channels.find(m => m.name === "bienvenue")
+  const bvn = member.guild.channels.find(m => m.name === "👋🏻╿вιєηνєηυє")
   if (!bvn) return;
   const embed = new Discord.RichEmbed()
   .setColor('#01B2FE')
@@ -31,7 +31,7 @@ bot.on("guildMemberAdd", member => {
 })
 
 bot.on("guildMemberRemove", member => {
-  const bvn = member.guild.channels.find(m => m.name === "bienvenue")
+  const bvn = member.guild.channels.find(m => m.name === "👋🏻╿вιєηνєηυє")
   if (!bvn) return;
   const embed = new Discord.RichEmbed()
   .setColor('#FE0101')
