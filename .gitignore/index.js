@@ -44,7 +44,7 @@ bot.on("guildMemberAdd", member => {
     .addField(`:bust_in_silhouette: • Utilisateur » ${member.user.username}`)
     .addField(`:arrow_right: • Passe du bon temps sur nos plateformes !`)
 
-     member.guild.channels.find("name", "👋🏻╿вιєηνєηυє").send(bvnEmbed);
+     member.guild.channels.find("name", "👋╿вιєηνєηυє").send(bvnEmbed);
 });
 
 
